@@ -14,8 +14,6 @@ public class StudentDAOImpl implements StudentDAO {
     private EntityManager entityManager;
 
 
-
-
     // inject entity manager using contractor injection
 
     @Autowired
@@ -24,13 +22,16 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
 
-
-
     // implement save method
 
     @Override
     @Transactional
     public void save(Student theStudent) {
         entityManager.persist((theStudent));
+    }
+
+    @Override
+    public Student findById(Integer id) {
+        return entityManager.find(Student.class, id);
     }
 }
